@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Javascript samples</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            Object.prototype.new = () => {
+                return Object.create(this)
+            }
+            Object.prototype.super = () => {
+                return Object.getPrototypeOf(this).new.apply(this, arguments)
+            }
+            const Person = (first, last, age, gender, interests) => {
+                this.name = {first, last}
+                this.age = age
+                this.gender = gender
+                this.interests = interests
+            }
+            Person.prototype.greetings = () => {
+                alert('Hi! I\'m ' + this.name.first)
+            }
+
+            const randomNumberGenerator = (min, max) => {
+                let range = max - min + 1
+                let offset = min
+                return {
+                    getNextRandom: () => {
+                        return Math.floor(Math.random() * range) + offset
+                    }
+                } 
+            }
+        </script>
+    </body>
+</html>
